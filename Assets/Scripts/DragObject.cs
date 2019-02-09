@@ -40,7 +40,7 @@ public class DragObject : MonoBehaviour
             Reposition();
     }
 
-    private Vector3 GetMouseWorldPos()
+    private Vector3 GetNewPosition()
     {
         if (tempMouseX != Input.GetAxis("Mouse X"))
             tempMouseX = positionX + (Input.GetAxis("Mouse X") * CursorManager.Instance.MouseSensitivity * 0.1f);
@@ -70,7 +70,7 @@ public class DragObject : MonoBehaviour
 
     private void Reposition()
     {
-        Vector3 newPosition = GetMouseWorldPos();
+        Vector3 newPosition = GetNewPosition();
         newPosition = grid.GetNearestPointOnGrid(newPosition);
         newPosition.y = transform.position.y;
         transform.position = newPosition;
